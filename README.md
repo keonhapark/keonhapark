@@ -6,14 +6,14 @@
 
 | 기간 | 프로젝트 | 설명 | 역할 |
 |:--:|---|---|:--:|
-| 2026 | [Logothea](https://github.com/keonhapark/Logothea) | 어닝콜 실시간 자막·번역, 직전 분기 발언 대조, 근거 기반 질의응답 데스크톱 앱 (졸업작품) | 백엔드 · 질의응답 · 데스크톱 |
+| 2026 | [Logothea](https://github.com/keonhapark/Logothea) | 어닝콜 실시간 자막·번역, 직전 분기 발언 대조, 근거 기반 질의응답 데스크톱 앱 (졸업작품전시회 장려상) | 백엔드 · 질의응답 · 데스크톱 |
 | 2026 | [KW-Space](https://github.com/KWU-Rapidash/KW-Space_BE) | 광운대 새빛관 강의실 대여 서비스 (멋쟁이사자처럼 14기) | 백엔드 |
 | 2026 | [HEY](https://github.com/likelion-kwu/14th-hackathon-team1-backend) | AI가 먼저 말을 거는 건강 대화 서비스 (멋쟁이사자처럼 중앙해커톤) | 백엔드 · 배포 |
 | 2025 | [PI-LOT](https://github.com/keonhapark/embedded-ai-autodrive) | 라즈베리파이 자율주행 RC카 (매치업 경진대회 우수상) | 표지판 인식 · 주행 구조 |
 
 ### Logothea (구 EarningWhisperer) · 2026.03 ~ 2026.10
 미국 기업 어닝콜을 실시간 자막과 한국어 번역으로 보여 주고, 경영진 발언을 직전 분기 발언과 대조하는 데스크톱 앱입니다.
-4인 팀 졸업작품에서 Spring Boot 백엔드, 어닝콜 질의응답 서비스, Electron 데스크톱 앱, 서버 인프라를 맡았습니다.
+4인 팀 졸업작품에서 Spring Boot 백엔드, 어닝콜 질의응답 서비스, Electron 데스크톱 앱, 서버 인프라를 맡았습니다. 이 작품(EarningWhisperer, 어닝콜 분석 투자 플랫폼)으로 2026 광운대학교 소프트웨어학부 졸업작품전시회 장려상을 받았습니다.
 
 **어닝콜 질의응답 (RAG)**
 - 콜을 들으며 던진 질문에, 질문 시점까지 나온 발언과 그 전에 발행된 자료만 근거로 답하는 서비스를 FastAPI로 따로 만들었습니다. 질문 분류 → 근거 수집 → 답변 생성 → 인용 검증 4단계이고, 답에 붙은 인용 표시가 실제 근거를 가리키는지, 인용한 문장의 수치가 원문에 있는지 코드로 확인합니다
