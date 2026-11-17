@@ -4,10 +4,24 @@
 
 | 기간 | 프로젝트 | 설명 | 역할 |
 |:--:|---|---|:--:|
+| 2026 | [AI 감독관 근무 중](https://ai-proctor.minchostudio.com) | AI 스마트 안경 부정행위를 잡는 시험 감독관 웹 3D 게임 (운영 중) | 기획 · 프론트 · 백엔드 · 배포 |
 | 2026 | [Logothea](https://github.com/keonhapark/Logothea) | 어닝콜 실시간 자막·번역, 직전 분기 발언 대조, 근거 기반 질의응답 데스크톱 앱 (졸업작품전시회 장려상) | 백엔드 · 질의응답 · 데스크톱 |
 | 2026 | [KW-Space](https://github.com/KWU-Rapidash/KW-Space_BE) | 대학 강의실 대여 서비스 (멋쟁이사자처럼 14기) | 백엔드 |
 | 2026 | [HEY](https://github.com/likelion-kwu/14th-hackathon-team1-backend) | AI가 먼저 말을 거는 건강 대화 서비스 (멋쟁이사자처럼 중앙해커톤) | 백엔드 · 배포 |
 | 2025 | [PI-LOT](https://github.com/keonhapark/embedded-ai-autodrive) | 라즈베리파이 자율주행 RC카 (매치업 경진대회 우수상) | 표지판 인식 · 주행 구조 |
+
+### AI 감독관 근무 중 · 2026.11
+시험장을 순찰하며 스마트 안경과 위장 카메라로 부정행위를 하는 수험생을 찾아내는 웹 3D 게임입니다. 기획, Three.js 클라이언트, Supabase 백엔드, 배포와 운영을 맡았습니다. [플레이하기](https://ai-proctor.minchostudio.com)
+
+**백엔드**
+- 브라우저가 보낸 점수를 믿지 않고, 판 시드와 플레이어의 지목만 받아 서버가 같은 규칙 코드로 다시 채점합니다. 일일 도전 시드는 날마다 바뀌는 비밀값의 HMAC으로 만들어 미리 계산할 수 없게 했습니다
+- 모두가 함께 쌓는 부정행위 적발 카운터에 손님 판도 더하되, 서버 재채점·판 길이 검사·IP 해시 속도 제한·보고 ID 중복 방지로 부풀리기를 막았습니다. 카운터 행은 8칸으로 나눠 동시 갱신 때의 잠금 경합을 줄였습니다
+- Postgres RLS로 익명 사용자의 권한을 랭킹 조회로만 좁히고, 의견과 IP 해시는 보관 기간이 지나면 pg_cron이 지웁니다
+
+**성능**
+- 윈도 데스크톱에서만 첫 화면이 11초 넘게 걸리던 문제를 단계별 측정 패널을 만들어 추적했습니다. 셰이더 동기 컴파일, 환경맵 런타임 생성, 캐릭터 보정 계산을 차례로 없애 5.5초로 줄였습니다. 남은 프레임 저하는 Edge 보안 강화 모드의 JIT 꺼짐이 원인임을 확인하고, 자동 화질 조절이 JS 병목과 렌더 병목을 구분하도록 바꿨습니다(JIT 꺼짐 환경 9fps → 33fps)
+
+`JavaScript` `Three.js` `Supabase(Postgres, Edge Functions)` `Cloudflare Pages` `Playwright`
 
 ### Logothea (구 EarningWhisperer) · 2026.03 ~ 2026.10
 미국 기업 어닝콜을 실시간 자막과 한국어 번역으로 보여 주고, 경영진 발언을 직전 분기 발언과 대조하는 데스크톱 앱입니다.
